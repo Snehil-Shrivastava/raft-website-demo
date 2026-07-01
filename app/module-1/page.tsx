@@ -77,7 +77,7 @@ const Module1 = () => {
 
     setTimeout(() => {
       router.push("/module-2");
-    }, 5000);
+    }, 2500);
   };
 
   return (
