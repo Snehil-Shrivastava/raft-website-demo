@@ -82,14 +82,14 @@ const Module1 = () => {
 
   return (
     <div ref={containerRef} className="h-screen pt-50">
-      <div className="w-4/5 mx-auto max-w-400 h-full">
+      <div className="w-4/5 max-sm:w-9/10 mx-auto max-w-400 h-full">
         <div>
-          <p className="animate-question bg-white shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] rounded-md px-8 py-7 text-xl font-bold text-center max-w-4/5 mx-auto opacity-0">
+          <p className="animate-question bg-slate-500 text-white shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] rounded-md px-8 max-sm:px-5 py-5 text-xl max-sm:text-lg font-bold text-center w-4/5 max-sm:w-full max-w-300 mx-auto opacity-0 select-none">
             The result is close, and serious questions have been raised. What
             should happen next?
           </p>
 
-          <div className="grid grid-cols-3 gap-x-10 my-15">
+          <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-x-10 max-sm:gap-y-10 my-15">
             {OPTIONS_DATA.map((option) => {
               // Check if THIS specific option has been clicked
               /* @ts-expect-error random */
@@ -109,7 +109,7 @@ const Module1 = () => {
                 <div key={option.id} className="animate-option opacity-0">
                   <div
                     onClick={() => handleSelect(option.id)}
-                    className={`h-full shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] rounded-md px-8 py-7 text-xl font-bold text-center select-none transition-all duration-300 ${conditionalClasses}`}
+                    className={`h-full shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] rounded-md px-8 py-7 text-xl max-sm:text-base font-bold text-center select-none transition-all duration-300 ${conditionalClasses}`}
                   >
                     <span className="transition-opacity duration-300 block">
                       {/* Show explanation only for clicked cards */}

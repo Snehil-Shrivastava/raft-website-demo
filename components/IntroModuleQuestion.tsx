@@ -34,10 +34,16 @@ const IntroModuleQuestion = () => {
         ref={mainContainerRef}
         className="max-w-150 bg-white font-bold tracking-wider mx-auto shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] rounded-md px-8 py-7 text-xl text-center opacity-0"
       >
-        <span>Did yoou see this?? 👀</span>
-        {/* <div></div> */}
-        <Image src={placeholder} alt="" className="mt-5 mb-10 blur-xs" />
-        <div className="flex items-center justify-between">
+        <span>Did you see this?? 👀</span>
+        <div className="relative h-100 max-sm:h-60">
+          <Image
+            src={placeholder}
+            alt=""
+            className="pt-5 pb-10 blur-xs object-cover"
+            fill
+          />
+        </div>
+        <div className="flex items-center justify-between max-sm:text-xs">
           <Link href={"/module-1"} className="underline font-light">
             Ignore it
           </Link>
