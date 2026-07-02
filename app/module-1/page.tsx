@@ -81,7 +81,10 @@ const Module1 = () => {
   };
 
   return (
-    <div ref={containerRef} className="h-screen pt-50">
+    <div
+      ref={containerRef}
+      className="h-screen pt-50 pb-20 max-sm:min-h-screen max-sm:h-auto"
+    >
       <div className="w-4/5 max-sm:w-9/10 mx-auto max-w-400 h-full">
         <div>
           <p className="animate-question bg-slate-500 text-white shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] rounded-md px-8 max-sm:px-5 py-5 text-xl max-sm:text-lg font-bold text-center w-4/5 max-sm:w-full max-w-300 mx-auto opacity-0 select-none">
