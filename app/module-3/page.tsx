@@ -45,7 +45,8 @@ const Module3 = () => {
 
       gsap.to(card, {
         scale: isSelected ? 1.05 : 1,
-        bottom: isSelected ? 250 : 200,
+        // bottom: isSelected ? 250 : 200,
+        yPercent: isSelected ? -15 : 0,
         duration: 0.3,
         overwrite: "auto",
       });
@@ -215,7 +216,8 @@ const Module3 = () => {
 
     gsap.to(cardRef.current[index], {
       scale: 1.05,
-      bottom: 250,
+      //   bottom: 250,
+      yPercent: -15,
       duration: 0.3,
       overwrite: "auto",
     });
@@ -226,7 +228,8 @@ const Module3 = () => {
 
     gsap.to(cardRef.current[index], {
       scale: 1,
-      bottom: 200,
+      //   bottom: 200,
+      yPercent: 0,
       duration: 0.3,
       overwrite: "auto",
     });
@@ -263,11 +266,11 @@ const Module3 = () => {
 
   return (
     <div className="h-screen overflow-hidden">
-      <div className="h-full w-4/5 max-w-300 mx-auto relative">
+      <div className="h-full w-4/5 max-sm:w-9/10 max-w-300 mx-auto relative">
         {/* Card 1 */}
         <Link
           href={"/module-3/#"}
-          className="bg-white w-50 h-70 flex items-center justify-center rounded-md absolute bottom-50 left-0 shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
+          className="bg-white w-50 h-70 max-sm:w-25 max-sm:h-30 flex items-center justify-center rounded-md absolute bottom-50 max-sm:bottom-10 left-0 shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
           /* @ts-expect-error ref error */
           ref={(el) => (cardRef.current[0] = el)}
           onMouseEnter={() => handleMouseEnter(0)}
@@ -280,7 +283,7 @@ const Module3 = () => {
         {/* Card 2 */}
         <Link
           href={"/module-3/#"}
-          className="bg-white w-50 h-70 flex items-center justify-center rounded-md absolute bottom-50 left-1/2 shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
+          className="bg-white w-50 h-70 max-sm:w-25 max-sm:h-30 flex items-center justify-center rounded-md absolute bottom-50 max-sm:bottom-10 left-1/2 shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
           /* @ts-expect-error ref error */
           ref={(el) => (cardRef.current[1] = el)}
           style={{
@@ -295,7 +298,7 @@ const Module3 = () => {
 
         {/* Card 3 */}
         <div
-          className="bg-white w-50 h-70 flex items-center justify-center rounded-md absolute bottom-50 right-0 shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
+          className="bg-white w-50 h-70 max-sm:w-25 max-sm:h-30 flex items-center justify-center rounded-md absolute bottom-50 max-sm:bottom-10 right-0 shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
           /* @ts-expect-error ref error */
           ref={(el) => (cardRef.current[2] = el)}
           onMouseEnter={() => handleMouseEnter(2)}
@@ -306,69 +309,77 @@ const Module3 = () => {
         </div>
 
         {/* Sub-cards Container */}
-        <div className="absolute bottom-150 w-400 h-100 flex justify-between items-center">
+        <div className="absolute bottom-150 max-sm:bottom-100 w-400 h-100 max-sm:h-50 flex justify-between items-center max-sm:flex-wrap max-sm:w-full max-sm:gap-y-5 max-sm:gap-x-2">
           <div
-            className="opacity-0 pointer-events-none bg-white w-50 h-70 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
+            className="opacity-0 pointer-events-none bg-white w-50 h-70 max-sm:w-20 max-sm:h-30 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none max-sm:px-1.5"
             /* @ts-expect-error ref error */
             ref={(el) => (cardRef.current[3] = el)}
             onMouseEnter={() => handleSubMouseEnter(3)}
             onMouseLeave={() => handleSubMouseLeave(3)}
           >
-            <span className="text-center">Register to vote</span>
+            <span className="text-center max-sm:text-xs">Register to vote</span>
           </div>
           <div
-            className="opacity-0 pointer-events-none bg-white w-50 h-70 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
+            className="opacity-0 pointer-events-none bg-white w-50 h-70 max-sm:w-20 max-sm:h-30 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none max-sm:px-1.5"
             /* @ts-expect-error ref error */
             ref={(el) => (cardRef.current[4] = el)}
             onMouseEnter={() => handleSubMouseEnter(4)}
             onMouseLeave={() => handleSubMouseLeave(4)}
           >
-            <span className="text-center">Vote!</span>
+            <span className="text-center max-sm:text-xs">Vote!</span>
           </div>
           <div
-            className="opacity-0 pointer-events-none bg-white w-50 h-70 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
+            className="opacity-0 pointer-events-none bg-white w-50 h-70 max-sm:w-20 max-sm:h-30 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none max-sm:px-1.5"
             /* @ts-expect-error ref error */
             ref={(el) => (cardRef.current[5] = el)}
             onMouseEnter={() => handleSubMouseEnter(5)}
             onMouseLeave={() => handleSubMouseLeave(5)}
           >
-            <span className="text-center">Work at the poll</span>
+            <span className="text-center max-sm:text-xs">Work at the poll</span>
           </div>
           <div
-            className="opacity-0 pointer-events-none bg-white w-50 h-70 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
+            className="opacity-0 pointer-events-none bg-white w-50 h-70 max-sm:w-20 max-sm:h-30 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none max-sm:px-1.5"
             /* @ts-expect-error ref error */
             ref={(el) => (cardRef.current[6] = el)}
             onMouseEnter={() => handleSubMouseEnter(6)}
             onMouseLeave={() => handleSubMouseLeave(6)}
           >
-            <span className="text-center">Observe the election</span>
+            <span className="text-center max-sm:text-xs">
+              Observe the election
+            </span>
           </div>
           <div
-            className="opacity-0 pointer-events-none bg-white w-50 h-70 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
+            className="opacity-0 pointer-events-none bg-white w-50 h-70 max-sm:w-20 max-sm:h-30 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none max-sm:px-1.5"
             /* @ts-expect-error ref error */
             ref={(el) => (cardRef.current[7] = el)}
             onMouseEnter={() => handleSubMouseEnter(7)}
             onMouseLeave={() => handleSubMouseLeave(7)}
           >
-            <span className="text-center">Check before I share</span>
+            <span className="text-center max-sm:text-xs">
+              Check before I share
+            </span>
           </div>
           <div
-            className="opacity-0 pointer-events-none bg-white w-50 h-70 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
+            className="opacity-0 pointer-events-none bg-white w-50 h-70 max-sm:w-20 max-sm:h-30 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none max-sm:px-1.5"
             /* @ts-expect-error ref error */
             ref={(el) => (cardRef.current[8] = el)}
             onMouseEnter={() => handleSubMouseEnter(8)}
             onMouseLeave={() => handleSubMouseLeave(8)}
           >
-            <span className="text-center">Learn my state&apos;s rules</span>
+            <span className="text-center max-sm:text-xs">
+              Learn my state&apos;s rules
+            </span>
           </div>
           <div
-            className="opacity-0 pointer-events-none bg-white w-50 h-70 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
+            className="opacity-0 pointer-events-none bg-white w-50 h-70 max-sm:w-20 max-sm:h-30 flex items-center justify-center rounded-md shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none max-sm:px-1.5"
             /* @ts-expect-error ref error */
             ref={(el) => (cardRef.current[9] = el)}
             onMouseEnter={() => handleSubMouseEnter(9)}
             onMouseLeave={() => handleSubMouseLeave(9)}
           >
-            <span className="text-center">Have one calm conversation</span>
+            <span className="text-center max-sm:text-xs">
+              Have one calm conversation
+            </span>
           </div>
         </div>
       </div>
