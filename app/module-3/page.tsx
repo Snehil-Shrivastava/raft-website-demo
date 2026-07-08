@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 import GetBadgeForm from "@/components/GetBadgeForm";
 
 gsap.registerPlugin(useGSAP, Flip);
@@ -385,8 +385,9 @@ const Module3 = () => {
           </div>
         </div>
       </div>
-
-      <GetBadgeForm />
+      <Suspense fallback={null}>
+        <GetBadgeForm />
+      </Suspense>
     </div>
   );
 };
