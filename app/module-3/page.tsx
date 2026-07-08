@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import GetBadgeForm from "@/components/GetBadgeForm";
 
 gsap.registerPlugin(useGSAP, Flip);
 
@@ -282,13 +283,14 @@ const Module3 = () => {
 
         {/* Card 2 */}
         <Link
-          href={"/module-3/#"}
+          href={"/module-3?getBadge=true"}
           className="bg-white w-50 h-70 max-sm:w-25 max-sm:h-30 flex items-center justify-center rounded-md absolute bottom-50 max-sm:bottom-10 left-1/2 shadow-[0_0_10px_2px_rgba(0,0,0,0.2)] cursor-pointer select-none"
           /* @ts-expect-error ref error */
           ref={(el) => (cardRef.current[1] = el)}
           style={{
             transform: "translateX(-50%)",
           }}
+          scroll={false}
           onMouseEnter={() => handleMouseEnter(1)}
           onMouseLeave={() => handleMouseLeave(1)}
           onClick={() => handleCardClick(1)}
@@ -383,6 +385,8 @@ const Module3 = () => {
           </div>
         </div>
       </div>
+
+      <GetBadgeForm />
     </div>
   );
 };
