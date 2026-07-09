@@ -12,6 +12,8 @@ const GetBadgeForm = () => {
 
   const [formData, setFormData] = useState({ name: "", email: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const closeModal = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -25,11 +27,35 @@ const GetBadgeForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: wire this up to whatever endpoint/action should issue the badge
-    console.log("Get badge form submitted:", formData);
-    setSubmitted(true);
+    setError(null);
+    setIsSubmitting(true);
+
+    console.log("data from outside try catch block", JSON.stringify(formData));
+
+    try {
+      const res = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      console.log("data", data);
+
+      if (!res.ok) {
+        throw new Error(data?.error?.error?.message || "Something went wrong");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.log("error", err);
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -43,7 +69,7 @@ const GetBadgeForm = () => {
         className="h-full w-full flex items-center justify-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative w-4/5 max-w-200 bg-white text-black rounded-md py-6 px-10 shadow-[0_0_20px_4px_rgba(0,0,0,0.25)] h-150 max-sm:w-9/10 max-sm:px-2 max-sm:py-8">
+        <div className="relative w-4/5 max-w-200 bg-white text-black rounded-md p-6 shadow-[0_0_20px_4px_rgba(0,0,0,0.25)]">
           <button
             type="button"
             onClick={closeModal}
@@ -69,12 +95,11 @@ const GetBadgeForm = () => {
             </div>
           ) : (
             <>
-              {/* <h2 className="text-lg font-semibold mb-1">Get your badge</h2>
+              <h2 className="text-lg font-semibold mb-1">Get your badge</h2>
               <p className="text-sm text-gray-600 mb-4">
                 Enter your details and we&apos;ll send your badge over.
-              </p> */}
-
-              {/* <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              </p>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                 <label className="flex flex-col gap-1 text-sm">
                   Name
                   <input
@@ -99,21 +124,16 @@ const GetBadgeForm = () => {
                   />
                 </label>
 
+                {error && <p className="text-sm text-red-600">{error}</p>}
+
                 <button
                   type="submit"
-                  className="mt-2 rounded-md bg-black text-white px-4 py-2 text-sm cursor-pointer hover:opacity-90"
+                  disabled={isSubmitting}
+                  className="mt-2 rounded-md bg-black text-white px-4 py-2 text-sm cursor-pointer hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit
+                  {isSubmitting ? "Submitting…" : "Submit"}
                 </button>
-              </form> */}
-              <iframe
-                className="airtable-embed"
-                src="https://airtable.com/embed/apppjD9WWCVbqQ8SP/pagH6fWcvFjOOL3cM/form"
-                frameBorder="0"
-                width="100%"
-                height="100%"
-                style={{ background: "transparent", border: "1px solid #ccc" }}
-              ></iframe>
+              </form>
             </>
           )}
         </div>
