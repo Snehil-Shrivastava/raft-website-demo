@@ -43,7 +43,7 @@ const GetBadgeForm = () => {
         className="h-full w-full flex items-center justify-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative w-4/5 max-w-200 bg-white text-black rounded-md p-6 shadow-[0_0_20px_4px_rgba(0,0,0,0.25)]">
+        <div className="relative w-4/5 max-w-200 bg-white text-black rounded-md py-6 px-10 shadow-[0_0_20px_4px_rgba(0,0,0,0.25)] h-150 max-sm:w-9/10 max-sm:px-2 max-sm:py-8">
           <button
             type="button"
             onClick={closeModal}
@@ -69,12 +69,12 @@ const GetBadgeForm = () => {
             </div>
           ) : (
             <>
-              <h2 className="text-lg font-semibold mb-1">Get your badge</h2>
+              {/* <h2 className="text-lg font-semibold mb-1">Get your badge</h2>
               <p className="text-sm text-gray-600 mb-4">
                 Enter your details and we&apos;ll send your badge over.
-              </p>
+              </p> */}
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              {/* <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                 <label className="flex flex-col gap-1 text-sm">
                   Name
                   <input
@@ -105,7 +105,15 @@ const GetBadgeForm = () => {
                 >
                   Submit
                 </button>
-              </form>
+              </form> */}
+              <iframe
+                className="airtable-embed"
+                src="https://airtable.com/embed/apppjD9WWCVbqQ8SP/pagH6fWcvFjOOL3cM/form"
+                frameBorder="0"
+                width="100%"
+                height="100%"
+                style={{ background: "transparent", border: "1px solid #ccc" }}
+              ></iframe>
             </>
           )}
         </div>
