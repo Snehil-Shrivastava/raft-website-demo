@@ -32,8 +32,6 @@ const GetBadgeForm = () => {
     setError(null);
     setIsSubmitting(true);
 
-    console.log("data from outside try catch block", JSON.stringify(formData));
-
     try {
       const res = await fetch("/api/submit-form", {
         method: "POST",
@@ -43,15 +41,12 @@ const GetBadgeForm = () => {
 
       const data = await res.json();
 
-      console.log("data", data);
-
       if (!res.ok) {
         throw new Error(data?.error?.error?.message || "Something went wrong");
       }
 
       setSubmitted(true);
     } catch (err) {
-      console.log("error", err);
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
       setIsSubmitting(false);
